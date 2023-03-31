@@ -1,4 +1,6 @@
-package Generic_Utility;
+package utililty;
+
+import java.io.IOException;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -12,9 +14,9 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Parameters;
 
 import ObjectRepository.LoginPage;
-import genericUtility.PropertyUtility;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class BaseClass {

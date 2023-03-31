@@ -1,8 +1,9 @@
-package Generic_Utility;
+package utililty;
 
 import java.util.Random;
 
-public class Java_Utility {
+public class JavaUtility {
+
 	public int getRanDomNum()
 	{
 		Random ran=new Random();

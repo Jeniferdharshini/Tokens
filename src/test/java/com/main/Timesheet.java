@@ -7,17 +7,18 @@ import java.util.Properties;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.edge.EdgeDriver;
-import org.testng.Assert;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
-import Generic_Utility.BaseClass;
-import Generic_Utility.Java_Utility;
-import Generic_Utility.Property_Utility;
-import ObjectRepo.Login_Page;
-import ObjectRepository.LoginPage;
+import ObjectRepo.LoginPage;
 import genericUtility.ExcelUtility;
-import genericUtility.JavaUtility;
-import genericUtility.WebdriverUtility;
+import utililty.BaseClass;
+import utililty.JavaUtility;
+import utililty.PropertyUtility;
+import utililty.WebdriverUtility;
+
+
+@Listeners(genericUtility.ListenerImplementation.class)
 
 public class Timesheet extends BaseClass {
 	
@@ -30,34 +31,23 @@ public class Timesheet extends BaseClass {
 		driver.findElement(By.name("pwd")).sendKeys("manager");
 		driver.findElement(By.id("loginButton")).click();
 		*/
-		Property_Utility proutil= new Property_Utility();
 		
 		WebdriverUtility wb= new WebdriverUtility();
 		wb.implicity_wait(driver);
 		
-		String URL = proutil.getKeyValue("url");
-		String USERNAME = proutil.getKeyValue("username");
-		String PASS = proutil.getKeyValue("password");
+		PropertyUtility proutil1=new PropertyUtility() ;
+		String URL = proutil1.getKeyValue("url");
+		String USERNAME = proutil1.getKeyValue("username");
+		String PASS = proutil1.getKeyValue("password");
 		driver.get(URL);
-		Login_Page lp=new Login_Page(driver);
+		LoginPage lp=new LoginPage(driver);
 		lp.loginData(USERNAME, PASS);
 		Thread.sleep(1000);
-		  
-
-		/*String URL = proutil.getKeyValue("url");
-		String USERNAME = proutil.getKeyValue("username");
-		String PASS = proutil.getKeyValue("password");
-		driver.get(URL);
-		driver.findElement(By.id("username")).sendKeys(USERNAME);
-		driver.findElement(By.name("pwd")).sendKeys(PASS);
-		driver.findElement(By.id("loginButton")).click();*/
 
     	driver.findElement(By.xpath("(//div[@class='menu_icon'])[2]")).click();
 		driver.findElement(By.xpath("//a[text()='Types of Work']")).click();
 		driver.findElement(By.xpath("//span[text()='Create Type of Work']")).click();
-		Assert.assertEquals(true, true);
-
-		Java_Utility ju=new Java_Utility();
+		JavaUtility ju=new JavaUtility();
 		int ranno=ju.getRanDomNum();
 		
 		Thread.sleep(1000);
